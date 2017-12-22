@@ -1,4 +1,4 @@
-const { Chromeless } = require('chromeless')
+const { Chromeless } = require('../dist/src/index')
 
 async function run() {
   const chromeless = new Chromeless()

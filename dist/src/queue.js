@@ -65,7 +65,7 @@ var Queue = /** @class */ (function () {
     };
     Queue.prototype.process = function (command) {
         return __awaiter(this, void 0, void 0, function () {
-            var lastWaitAllTmp;
+            var lastWaitAllTmp, currentWaitAll;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -79,10 +79,21 @@ var Queue = /** @class */ (function () {
                     case 2:
                         this.lastWaitAll = this.waitAll();
                         _a.label = 3;
-                    case 3: return [4 /*yield*/, this.lastWaitAll];
+                    case 3:
+                        currentWaitAll = this.lastWaitAll;
+                        _a.label = 4;
                     case 4:
+                        _a.trys.push([4, , 6, 7]);
+                        return [4 /*yield*/, this.lastWaitAll];
+                    case 5:
                         _a.sent();
-                        return [2 /*return*/, this.chrome.process(command)];
+                        return [3 /*break*/, 7];
+                    case 6:
+                        if (this.lastWaitAll == currentWaitAll) {
+                            this.lastWaitAll = null;
+                        }
+                        return [7 /*endfinally*/];
+                    case 7: return [2 /*return*/, this.chrome.process(command)];
                 }
             });
         });
